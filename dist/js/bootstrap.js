@@ -1317,7 +1317,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
       if (autoPlace) {
         var orgPlacement = placement
-        var $parent      = this.$element.parent()
+        var $parent      = $tip.parent()
         var parentDim    = this.getPosition($parent)
 
         placement = placement == 'bottom' && pos.top   + pos.height       + actualHeight - parentDim.scroll > parentDim.height ? 'top'    :
@@ -1468,8 +1468,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
     var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
     var outerDims = isSvg ? {} : {
-      width:  isBody ? $(window).width()  : $element.outerWidth(),
-      height: isBody ? $(window).height() : $element.outerHeight()
+      width:  isBody ? $(window).innerWidth()  : $element.outerWidth(),
+      height: isBody ? $(window).innerHeight() : $element.outerHeight()
     }
 
     return $.extend({}, elRect, scroll, outerDims, elOffset)
